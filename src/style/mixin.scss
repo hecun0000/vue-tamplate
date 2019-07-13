@@ -1,0 +1,127 @@
+
+//定位全屏
+@mixin allcover {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+//transform上下左右居中
+@mixin ct {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//定位上下左右居中
+@mixin ctp($width, $height) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -$height/2;
+    margin-left: -$width/2;
+}
+
+//flex上下左右剧中
+@mixin fct() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//定位上下居中
+@mixin tb {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+//flex上下剧中
+@mixin ftb {
+    display: flex;
+    align-items: center;
+}
+
+//定位左右居中
+@mixin lr {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+//flex左右剧中
+@mixin flr() {
+    display: flex;
+    justify-content: center;
+}
+
+//宽高
+@mixin wh($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+//字体大小、行高、字体
+@mixin ft($size, $line-height) {
+    font-size: $size;
+    line-height: $line-height;
+}
+
+//字体大小，颜色
+@mixin sc($size, $color) {
+    font-size: $size;
+    color: $color;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin fj($type: space-between) {
+    display: flex;
+    justify-content: $type;
+}
+
+//2倍图、3倍图，默认2倍图
+@mixin bg-image($url) {
+    background-image: url("./images/"+ $url + "@2x.png");
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {
+        background-image: url("./images/"+ $url + "@3x.png");
+    }
+}
+
+//多行超出省略号
+@mixin ellipsis($line: 2, $line-height: 1.2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    line-height: $line-height;
+}
+
+@mixin modalbg($color-bg: rgba(0, 0, 0, 0.2)) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $color-bg;
+}
+
+@mixin flex($direction: column, $wrap: nowrap) {
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+}
+
+@mixin clear() {
+    &:after {
+        content: '.';
+        clear: both;
+        display: block;
+        width: 0;
+        height: 0;
+        visibility: hidden;
+    }
+}
