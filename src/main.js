@@ -5,6 +5,8 @@ import store from './store'
 import i18n from './locale'
 import filters from './filters'
 import './control'
+import './components'
+import './assets/icons'
 
 import Toast from './components/toast/index'
 Vue.use(Toast);

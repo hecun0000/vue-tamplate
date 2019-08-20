@@ -34,6 +34,7 @@ export default {
             state.userInfo = userInfo;
         },
         [types.SET_RANK](state, rank) {
+          console.log(rank)
             state.rank = rank;
         },
     },

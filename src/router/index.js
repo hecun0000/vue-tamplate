@@ -19,7 +19,12 @@ const constantRouterMap = [
     {
         path: '*',
         redirect: '/'
-    }
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: _import('login/index')
+    },
 ];
 
 

@@ -1,5 +1,7 @@
 <template>
 	<div id="app">
+    <router-link to='/login'>登录</router-link>
+     <svg-icon style="padding-left: 5px;"  icon-class="user"></svg-icon>
 		<Layout>
 			<router-view/>
 		</Layout>
