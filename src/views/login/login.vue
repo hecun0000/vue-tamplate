@@ -1,5 +1,6 @@
 <template>
     <div >
+      <el-button>按钮</el-button>
         <div class="login">
           <span class="icon icon1"></span>
           <span class="icon icon2"></span>
@@ -11,12 +12,12 @@
 <script>
 
 export default {
-    name: 'Login',
-    data() {
-        return {
-            test: ''
-        }
+  name: 'Login',
+  data () {
+    return {
+      test: ''
     }
+  }
 }
 </script>
 

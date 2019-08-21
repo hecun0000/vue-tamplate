@@ -8,15 +8,15 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                show: false,
-                message: '',
-                type: ''
-            }
-        }
+export default {
+  data () {
+    return {
+      show: false,
+      message: '',
+      type: ''
     }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

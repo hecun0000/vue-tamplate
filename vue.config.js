@@ -1,11 +1,11 @@
 // vue.config.js
-const path = require('path');
+const path = require('path')
 // 打包分析
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 // gzip
 const CompressionPlugin = require('compression-webpack-plugin')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
@@ -19,10 +19,10 @@ module.exports = {
   lintOnSave: true,
 
   devServer: {
-    open: false,        // 是否自动打开浏览器页面
-    host: '0.0.0.0',    // 指定使用一个 host，默认是 localhost
-    port: 8080,         // 端口地址
-    https: false,       // 使用https提供服务
+    open: false, // 是否自动打开浏览器页面
+    host: '0.0.0.0', // 指定使用一个 host，默认是 localhost
+    port: 8080, // 端口地址
+    https: false, // 使用https提供服务
     // 这里写你调用接口的基础路径，来解决跨域，如果设置了代理，那你本地开发环境的axios的baseUrl要写为 '' ，即空字符串
     proxy: 'http://api.zhuishushenqi.com'
   },
@@ -88,7 +88,6 @@ module.exports = {
           ]
         })
 
-
       // 第三方库使用cdn
       const externals = {
         vue: 'Vue',
@@ -121,25 +120,25 @@ module.exports = {
           args[0].cdn = cdn
           return args
         })
-    }
-  },
-
-  configureWebpack: config => {
-    // 生产环境打包分析体积
-    if (process.env.NODE_ENV === 'production') {
-      return {
-        plugins: [
-          new BundleAnalyzerPlugin()
-        ]
+      // #region 分析打包体积
+      console.log(process.env.NODE_ENV, '(process.env.NODE_ENV')
+      if (process.env.IS_ANALYZE) {
+        config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
+          {
+            analyzerMode: 'static'
+          }
+        ])
       }
+
+      // #endregion 分析打包体积
     }
   },
   css: {
     loaderOptions: {
       sass: {
         data: `
-                @import "@/style/mixin.scss";
-                @import "@/style/_var.scss";
+                @import "@/styles/mixin.scss";
+                @import "@/styles/_var.scss";
                 `
       }
     }
@@ -152,5 +151,5 @@ module.exports = {
         '~images': path.resolve('./src/assets/images')
       }
     }
-  }),
-};
+  })
+}

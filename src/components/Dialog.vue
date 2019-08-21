@@ -20,45 +20,45 @@
 </template>
 
 <script>
-    import animate from 'animate.css';
+// import animate from 'animate.css'
 
-    export default {
-        props: {
-            isVisible: {
-                type: Boolean,
-                default: false
-            },
-            showMask: {
-                type: Boolean,
-                default: false
-            }
-        },
-        data() {
-            return {
-                visible: false
-            }
-        },
-        watch: {
-            isVisible(val) {
-                this.visible = this.isVisible;
-            }
-        },
-        created() {
-            document.addEventListener('click', (e) => {
-                if (e.target.className === 'm-dialog-wrap') this.closeDialog();
-            })
-        },
-        beforeDestroy() {
-            document.removeEventListener('click', (e) => {
-                if (e.target.className === 'm-dialog-wrap') this.closeDialog();
-            });
-        },
-        methods: {
-            closeDialog() {
-                this.$emit('close');
-            }
-        }
+export default {
+  props: {
+    isVisible: {
+      type: Boolean,
+      default: false
+    },
+    showMask: {
+      type: Boolean,
+      default: false
     }
+  },
+  data () {
+    return {
+      visible: false
+    }
+  },
+  watch: {
+    isVisible (val) {
+      this.visible = this.isVisible
+    }
+  },
+  created () {
+    document.addEventListener('click', (e) => {
+      if (e.target.className === 'm-dialog-wrap') this.closeDialog()
+    })
+  },
+  beforeDestroy () {
+    document.removeEventListener('click', (e) => {
+      if (e.target.className === 'm-dialog-wrap') this.closeDialog()
+    })
+  },
+  methods: {
+    closeDialog () {
+      this.$emit('close')
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

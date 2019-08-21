@@ -4,7 +4,7 @@
         <HelloWorld msg="Welcome to Your Vue.js App"/>
         <p @click="changeUserInfo(233)">
             vuex示例：
-            {{getUserInfo}}
+            {{ getUserInfo }}
         </p>
         <p @click="handleUrl">
             iconfont:
@@ -72,112 +72,113 @@
 </template>
 
 <script>
-    // @ is an alias to /src
-    import HelloWorld from "@/components/HelloWorld";
-    import CountDown from "@/components/CountDown.vue";
-    import CountDown2 from "@/components/CountDown"
-    import Dialog from "@/components/Dialog";
-    import {mapState, mapMutations, mapActions, mapGetters} from "vuex";
-    import env from "@/config/env";
-    import {getUserInfo} from "@/api/common";
-    import animate from 'animate.css';
-    import TWEEN from 'tween.js';
-    import NP from 'number-precision'
+// @ is an alias to /src
+import HelloWorld from '@/components/HelloWorld'
+import CountDown from '@/components/CountDown.vue'
+import CountDown2 from '@/components/CountDown'
+import Dialog from '@/components/Dialog'
+import { mapState, mapActions, mapGetters } from 'vuex'
+// import env from '@/config/env'
+// import { getUserInfo } from '@/api/common'
+// import animate from 'animate.css'
+import TWEEN from 'tween.js'
+import NP from 'number-precision'
 
-    export default {
-        name: "home",
-        components: {
-            HelloWorld,
-            CountDown,
-            CountDown2,
-            Dialog
-        },
-        data() {
-            return {
-                showDialog: false,
-                show: false,
-                num: 0,
-                isVisible: false,
-                counting: false
-            }
-        },
-        computed: {
-            ...mapState("user", ["userInfo", "rank"]),
-            ...mapGetters("user", ["getUserInfo"]),
-            number() {
-                return NP.plus(0.1, 0.2)
-            }
-        },
-        mounted() {
-            this.getRank();
-            // vue结合animate.css实现动画示例
-            setTimeout(() => {
-                this.show = true;
-            }, 1000)
-            // setTimeout(() => {
-            //     this.show = false;
-            // }, 6000)
-            // tweenJs示例
-            this.tweenJS();
-        },
-        methods: {
-            ...mapActions("user", ["changeUserInfo", "getRank"]),
-            handleLang() {
-                this.$i18n.locale = this.$i18n.locale === 'zh-CN' ? 'en-US' : 'zh-CN';
-            },
-            timeStart() {
+export default {
+  name: 'home',
+  components: {
+    HelloWorld,
+    CountDown,
+    CountDown2,
+    Dialog
+  },
+  data () {
+    return {
+      showDialog: false,
+      show: false,
+      num: 0,
+      isVisible: false,
+      counting: false
+    }
+  },
+  computed: {
+    ...mapState('user', ['userInfo', 'rank']),
+    ...mapGetters('user', ['getUserInfo']),
+    number () {
+      return NP.plus(0.1, 0.2)
+    }
+  },
+  mounted () {
+    this.getRank()
+    // vue结合animate.css实现动画示例
+    setTimeout(() => {
+      this.show = true
+    }, 1000)
+    // setTimeout(() => {
+    //     this.show = false;
+    // }, 6000)
+    // tweenJs示例
+    this.tweenJS()
+  },
+  methods: {
+    ...mapActions('user', ['changeUserInfo', 'getRank']),
+    handleLang () {
+      this.$i18n.locale = this.$i18n.locale === 'zh-CN' ? 'en-US' : 'zh-CN'
+    },
+    timeStart () {
 
-            },
-            timeEnd() {
+    },
+    timeEnd () {
 
-            },
-            tweenJS() {
-                let frameHandler
+    },
+    tweenJS () {
+      let frameHandler
 
-                function animate(time) {
-                    frameHandler = requestAnimationFrame(animate);
-                    TWEEN.update(time); // time表示多长时间执行一次
-                }
+      function animate (time) {
+        frameHandler = requestAnimationFrame(animate)
+        TWEEN.update(time) // time表示多长时间执行一次
+      }
 
-                // 创建补间动画
-                let that = this;
-                let tween = new TWEEN.Tween({num: 0})
-                    .to({num: 2000}, 3000)
-                    .easing(TWEEN.Easing.Linear.None)
-                    .onUpdate(function () {
-                        // 这里不要用箭头函数，这里的this指向Tween实例
-                        that.num = this.num.toFixed(0)
-                    })
-                    .onComplete(() => {
-                        // Make sure to clean up after ourselves.
-                        cancelAnimationFrame(frameHandler)
-                    })
-                    .start()
+      // 创建补间动画
+      let that = this
+      new TWEEN.Tween({ num: 0 })
+        .to({ num: 2000 }, 3000)
+        .easing(TWEEN.Easing.Linear.None)
+        .onUpdate(function () {
+          // 这里不要用箭头函数，这里的this指向Tween实例
+          that.num = this.num.toFixed(0)
+        })
+        .onComplete(() => {
+          // Make sure to clean up after ourselves.
+          cancelAnimationFrame(frameHandler)
+        })
+        .start()
 
-                // 开始补间动画
-                animate();
-            },
-            openDialog() {
-                this.isVisible = true;
-            },
-            closeDialog() {
-                this.isVisible = false;
-            },
-            startCountdown: function () {
-                this.counting = true;
-            },
-            handleCountdownEnd: function () {
-                this.counting = false;
-            },
-            handleToast() {
-                this.$toast('Hello Vue Plugin', 'success')
-            },
-            // 用于清空hash路由中间卡着的不必要的信息，如：/?sdfdsf#/
-            handleUrl() {
-                history.pushState({}, null, location.href.replace(/\/\?(.*?)\#\//, '/#/'));
-            }
-        }
-    };
+      // 开始补间动画
+      animate()
+    },
+    openDialog () {
+      this.isVisible = true
+    },
+    closeDialog () {
+      this.isVisible = false
+    },
+    startCountdown: function () {
+      this.counting = true
+    },
+    handleCountdownEnd: function () {
+      this.counting = false
+    },
+    handleToast () {
+      this.$toast('Hello Vue Plugin', 'success')
+    },
+    // 用于清空hash路由中间卡着的不必要的信息，如：/?sdfdsf#/
+    handleUrl () {
+      /* eslint-disable-next-line */
+      history.pushState({}, null, location.href.replace(/\/\?(.*?)\#\//, '/#/'))
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

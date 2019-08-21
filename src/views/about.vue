@@ -8,20 +8,20 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                txt: '',
-                timer: ''
-            }
-        },
-        methods: {
-            handleKeyUp() {
-                clearTimeout(this.timer);
-                this.timer = setTimeout(() => {
-                    console.log(this.txt)
-                }, 250);
-            }
-        }
+export default {
+  data () {
+    return {
+      txt: '',
+      timer: ''
     }
+  },
+  methods: {
+    handleKeyUp () {
+      clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        console.log(this.txt)
+      }, 250)
+    }
+  }
+}
 </script>
