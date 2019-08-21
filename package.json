@@ -9,7 +9,7 @@
     "analyze": "vue-cli-service build --mode analyze",
     "com": "node ./scripts/generateComponent",
     "page": "node ./scripts/generateView",
-    "test:unit": "vue-cli-service test:unit"
+    "test": "vue-cli-service test:unit"
   },
   "dependencies": {
     "animate.css": "^3.7.2",
