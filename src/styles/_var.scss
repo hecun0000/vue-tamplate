@@ -7,16 +7,44 @@ $font-weight-base: 400;
 
 $border-color-base: rgba(101, 135, 248, 0.36);
 
+// 文字大小
 $font-size-lg: 18px;
 $font-size-md: 16px;
 $font-size-base: 14px;
 $font-size-sm: 12px;
 $font-size-mini: 10px;
 
+// 文字颜色
 $color-important: #222222;
 $color-common: #606060;
 $color-desc: #909090;
 $color-disabled: #BFBFBF;
-$color-error: #F04134;
-$color-warn: #F5A623;
+
+// 提示颜色
+$color-error: #e6727c;
+$color-warn: #eea16a;
 $color-lighting: #9013FE;
+$color-primary: #0a9fc0;
+$color-success: #4bc9ac;
+
+$padding-common: 15px;
+
+// 背景色
+$page-bg-color: #f3f3f3;
+
+$border-color-common: #e4e4e4;
+
+
+$menuBg: #1388ad;
+$menuHover:#157a9a;
+
+$subMenuBg:#00516b;
+$subMenuHover: #166782;
+
+:export {
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+
+}

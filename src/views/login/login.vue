@@ -1,12 +1,43 @@
 <template>
   <div class="login">
-    <div class="header">
-      <div class="inner-header">
-        <div class="login-container">
-          登录组件
-        </div>
-      </div>
+    <div class="login-container">
+      <img src="http://static.hecun.site/hecun.321c947a.jpg" class="logo" alt="logo" />
+      <div>
+        <h2 class="title">XXX后台管理登录</h2>
+        <el-form
+          :model="form"
+          status-icon
+          :rules="rules"
+          size="medium"
+          ref="form"
+          class="demo-ruleForm"
+        >
+          <el-form-item prop="userName">
+            <el-input
+              type="password"
+              v-model="form.userName"
+              autocomplete="off"
+              placeholder="请输入用户名"
+              prefix-icon="iconfont icon-user"
+            ></el-input>
+          </el-form-item>
+          <el-form-item prop="passWord">
+            <el-input
+              type="password"
+              v-model="form.passWord"
+              placeholder="请输入密码"
+              autocomplete="off"
+              prefix-icon="iconfont icon-lock"
+            ></el-input>
+          </el-form-item>
 
+          <el-form-item>
+            <el-button type="primary" class="block-button" @click="submitForm('ruleForm')">登 录</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
+    </div>
+    <div class="main-box">
       <div class="waves-container">
         <svg
           class="waves"
@@ -30,9 +61,9 @@
           </g>
         </svg>
       </div>
-    </div>
-    <div class="content">
-      <p>2019 | HECUN | TEST</p>
+      <div class="content">
+        <p>2019 | HECUN | TEST</p>
+      </div>
     </div>
   </div>
 </template>
@@ -41,60 +72,114 @@ export default {
   name: 'Login',
   data () {
     return {
-      test: ''
+      form: {
+        userName: '',
+        passWord: ''
+      },
+      rules: {
+        userName: [
+          { required: true, message: '请输入用户名', trigger: 'change' }
+        ],
+        passWord: [{ required: true, message: '请输入密码', trigger: 'change' }]
+      }
+    }
+  },
+  methods: {
+    submitForm (formName) {
+      this.$refs.form.validate(valid => {
+        if (valid) {
+          this.$router.push({ name: 'dashboard' })
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
 .login-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 10;
   width: 400px;
   height: 400px;
   background: #fff;
   border-radius: 6px;
-  margin-bottom: -100px;
   box-shadow: 0 2px 12px 0 rgba(36, 123, 188, 0.88);
+  padding: 20px 40px;
+  color: $color-common;
+  text-align: center;
+
+  .title {
+    font-size: $font-size-md;
+    color: $color-primary;
+    font-family: "Lato", sans-serif;
+    font-weight: normal;
+    margin: 20px 0 30px;
+  }
+  .logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    margin-top: 20px;
+    &:hover {
+      transform: rotate(666turn);
+      transition-delay: 1s;
+      transition-property: all;
+      transition-duration: 59s;
+      transition-timing-function: cubic-bezier(0.34, 0, 0.84, 1);
+    }
+  }
+  .block-button {
+    display: block;
+    width: 100%;
+  }
 }
 
 .login {
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  .header {
-    position: relative;
-    text-align: center;
+  .main-box {
     background: linear-gradient(
       60deg,
       rgba(84, 58, 183, 1) 0%,
       rgba(0, 172, 193, 1) 100%
     );
-    color: white;
-    flex: 1;
     display: flex;
     flex-direction: column;
-    .inner-header {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    justify-content: flex-end;
+    height: 100vh;
+    width: 100vw;
+  }
+  .content {
+    height: 10vh;
+    text-align: center;
+    background-color: white;
+    p {
+      font-family: "Lato", sans-serif;
+      letter-spacing: 1px;
+      font-size: $font-size-base;
+      color: $color-common;
     }
   }
 }
 
-.content {
-  position: relative;
-  height: 10vh;
-  text-align: center;
-  background-color: white;
-  p {
-    font-family: "Lato", sans-serif;
-    letter-spacing: 1px;
-    font-size: 14px;
-    color: #333333;
-    line-height: 14vh;
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+  .content {
+    height: 20vh;
   }
 }
 
@@ -134,19 +219,6 @@ export default {
   }
   100% {
     transform: translate3d(85px, 0, 0);
-  }
-}
-/*Shrinking for mobile*/
-@media (max-width: 768px) {
-  .waves {
-    height: 40px;
-    min-height: 40px;
-  }
-  .content {
-    height: 20vh;
-  }
-  h1 {
-    font-size: 24px;
   }
 }
 </style>

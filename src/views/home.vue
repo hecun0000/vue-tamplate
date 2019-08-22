@@ -182,8 +182,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "~@/assets/iconfont/iconfont.css";
-
     .home {
         display: flex;
         flex-flow: column;

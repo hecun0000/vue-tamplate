@@ -1,0 +1,23 @@
+<template>
+  <div class="layout">
+    <sidebar />
+    <div class="layout-main-container">
+      <navbar />
+      <app-main />
+    </div>
+  </div>
+</template>
+<script>
+import { sidebar, navbar, appMain } from './components';
+export default {
+  name: 'layout',
+  components: {
+    sidebar,
+    navbar,
+    appMain
+  }
+}
+</script>
+<style lang="scss">
+@import "../../styles/layout";
+</style>

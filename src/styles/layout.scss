@@ -1,0 +1,76 @@
+.layout {
+  width: 100vw;
+  height: 100vh;
+  background: $page-bg-color;
+  position: relative;
+  .sidebar {
+    position: absolute;
+    width: 200px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: $menuBg;
+  }
+  .layout-main-container {
+    margin-left: 200px;
+    height: 100%;
+  }
+}
+
+.layout-main-container {
+  position: relative;
+  .navbar {
+    position: absolute;
+    height: 60px;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  }
+  .app-main {
+    padding-top: 60px;
+  }
+}
+
+#app .sidebar {
+  .sidebar-menu {
+    i {
+        color: #fff;
+    }
+  }
+
+  .logo-box {
+    text-align: center;
+  }
+  .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 10px 0;
+  }
+  .el-menu {
+    border: 0;
+    // background: $background-sidebar;
+  }
+
+  .submenu-title-noDropdown,
+    .el-submenu__title {
+      &:hover {
+        background-color: $menuHover !important;
+      }
+    }
+
+    .is-active>.el-submenu__title {
+      // color: $subMenuActiveText !important;
+    }
+
+    & .nest-menu.el-submenu>.el-submenu__title,
+    & .el-submenu .el-menu-item {
+      // min-width: $sideBarWidth !important;
+      background-color: $subMenuBg !important;
+
+      &:hover {
+        background-color: $subMenuHover !important;
+      }
+    }
+
+}
