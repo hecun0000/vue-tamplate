@@ -125,3 +125,8 @@
         visibility: hidden;
     }
 }
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+}

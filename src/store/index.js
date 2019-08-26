@@ -1,27 +1,38 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import mutations from './mutations'
-import actions from './actions'
-
-import home from './home'
+import getters from './getters'
+import { user, app } from './modules'
 
 Vue.use(Vuex)
 
-let modules = {
-  ...home
+const types = {
+  'SET_USER_INFO': 'SET_USER_INFO',
+  'SET_RANK': 'SET_RANK'
+}
+
+const state = {
+  groups: [1]
+}
+
+const mutations = {
+  [types.SET_USER_INFO] (state, userInfo) {
+    state.userInfo = userInfo
+  }
+}
+const actions = {
+  changeUserInfo ({ commit }, info) {
+    let userInfo = `this is ${info}`
+    commit(types.SET_USER_INFO, userInfo)
+  }
 }
 
 export default new Vuex.Store({
-  state: {
-    groups: [1]
+  modules: {
+    user,
+    app
   },
-  modules,
-  actions, // 根级别的 action
-  mutations, // 根级别的 mutations
-  // 根级别的 getters
-  getters: {
-    getGroups (state) {
-      return state.groups
-    }
-  }
+  state,
+  actions,
+  mutations,
+  getters
 })

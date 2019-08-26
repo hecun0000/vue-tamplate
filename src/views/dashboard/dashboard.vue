@@ -9,5 +9,6 @@ export default {
 <style lang="scss" scoped>
 .dashboard {
   background: #fff;
+  min-height: 100%;
 }
 </style>

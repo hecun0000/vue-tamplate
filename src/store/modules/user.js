@@ -1,5 +1,8 @@
-import * as types from '@/store/mutation-types.js'
 import { rankGender } from '@/api/common'
+const types = {
+  'SET_USER_INFO': 'SET_USER_INFO',
+  'SET_RANK': 'SET_RANK'
+}
 
 export default {
   namespaced: true,

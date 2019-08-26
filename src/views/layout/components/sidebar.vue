@@ -4,11 +4,12 @@
       <img src="http://static.hecun.site/hecun.321c947a.jpg" class="logo" alt="logo" />
     </div>
     <el-menu
-      default-active="1-4-1"
+      default-active="1-1"
       class="sidebar-menu"
-      text-color="#fff"
+      text-color="#cfcfcf"
+      :active-text-color="variables.menuActiveText"
       :background-color="variables.menuBg"
-      :collapse="false"
+      :collapse="sidebarCollapse"
       :unique-opened="false"
       :collapse-transition="false"
     >
@@ -42,6 +43,7 @@
 </template>
 <script>
 import variables from '@/styles/_var.scss'
+import { mapGetters } from 'vuex'
 export default {
   name: 'sidebar',
   data () {
@@ -50,6 +52,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['sidebarCollapse']),
     variables () {
       return variables
     }

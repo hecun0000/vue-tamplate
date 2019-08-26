@@ -163,11 +163,15 @@ export default {
     height: 10vh;
     text-align: center;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     p {
       font-family: "Lato", sans-serif;
       letter-spacing: 1px;
       font-size: $font-size-base;
       color: $color-common;
+      line-height: 36px;
     }
   }
 }

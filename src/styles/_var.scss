@@ -5,7 +5,6 @@
 
 $font-weight-base: 400;
 
-$border-color-base: rgba(101, 135, 248, 0.36);
 
 // 文字大小
 $font-size-lg: 18px;
@@ -31,20 +30,21 @@ $padding-common: 15px;
 
 // 背景色
 $page-bg-color: #f3f3f3;
-
 $border-color-common: #e4e4e4;
 
-
+// 侧栏样式
+$sideBarWidth: 180px;
 $menuBg: #1388ad;
 $menuHover:#157a9a;
-
 $subMenuBg:#00516b;
 $subMenuHover: #166782;
+$subMenuActiveText:#fff;
+$menuActiveText: #55cdf3;
 
 :export {
   menuBg: $menuBg;
   menuHover: $menuHover;
   subMenuBg: $subMenuBg;
   subMenuHover: $subMenuHover;
-
+  menuActiveText: $menuActiveText
 }
