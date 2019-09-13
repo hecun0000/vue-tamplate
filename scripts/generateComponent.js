@@ -24,7 +24,7 @@ process.stdin.on('data', async chunk => {
    * 入口文件路径
    */
   const entryComponentName = resolve(componentDirectory, 'index.js')
-  
+
   const hasComponentDirectory = fs.existsSync(componentDirectory)
   if (hasComponentDirectory) {
     errorLog(`${inputName}组件目录已存在，请重新输入`)

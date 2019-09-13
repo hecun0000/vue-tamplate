@@ -18,9 +18,8 @@ export default {
 </style>
 `
   },
-  entryTemplate: compoenntName =>(
+  entryTemplate: compoenntName => (
     `import ${compoenntName} from './${compoenntName}.vue'
 export default ${compoenntName}
 `)
 }
-

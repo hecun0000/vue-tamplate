@@ -4,7 +4,6 @@ const fs = require('fs')
 const { resolve, log, successLog, errorLog, generateFile, dotExistDirectoryCreate } = require('./utils')
 const { vueTemplate } = require('./template')
 
-
 log('请输入要生成的页面组件名称、会生成在 views/目录下')
 let componentName = ''
 process.stdin.on('data', async chunk => {

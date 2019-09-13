@@ -1,5 +1,5 @@
 import axios from 'axios'
-import env from '@/utils/config/env'
+import env from '@/utils/env'
 
 // const MOCKURL = '' // mock数据地址
 
@@ -8,16 +8,11 @@ import env from '@/utils/config/env'
  */
 const service = axios.create({
   baseURL: env.baseUrl,
-  timeout: 30000,
-  withCredentials: env.credential
+  timeout: 30000
 })
 
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
-  // 在发送请求之前做些什么
-  if (process.env.NODE_ENV === 'development') {
-    config.url = `http://${location.host}` + config.url // 自定义反向代理
-  }
   return config
 }, function (error) {
   // 对请求错误做些什么

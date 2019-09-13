@@ -1,0 +1,14 @@
+.common-table {
+  padding: 15px;
+  background: #fff;
+  .handle-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pagination {
+    text-align: right;
+    margin-top: 15px;
+  }
+}

@@ -13,6 +13,11 @@ $font-size-base: 14px;
 $font-size-sm: 12px;
 $font-size-mini: 10px;
 
+// 弹窗宽度大小
+$dialog-sm-width: 500px;
+$dialog-md-width: 800px;
+$dialog-lg-width: 1100px;
+
 // 文字颜色
 $color-important: #222222;
 $color-common: #606060;
@@ -32,19 +37,29 @@ $padding-common: 15px;
 $page-bg-color: #f3f3f3;
 $border-color-common: #e4e4e4;
 
-// 侧栏样式
-$sideBarWidth: 180px;
-$menuBg: #1388ad;
-$menuHover:#157a9a;
-$subMenuBg:#00516b;
-$subMenuHover: #166782;
-$subMenuActiveText:#fff;
-$menuActiveText: #55cdf3;
+
+// sidebar
+$menuText:#bfcbd9;
+$menuActiveText:#409EFF;
+$subMenuActiveText:#f4f4f5;
+
+$menuBg:#304156;
+$menuHover:#263445;
+
+$subMenuBg:#1f2d3d;
+$subMenuHover:#001528;
+
+$sideBarWidth: 200px;
+
 
 :export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
   menuBg: $menuBg;
   menuHover: $menuHover;
   subMenuBg: $subMenuBg;
   subMenuHover: $subMenuHover;
-  menuActiveText: $menuActiveText
+  sideBarWidth: $sideBarWidth;
 }
+

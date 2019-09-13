@@ -1,27 +1,22 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './App'
 import router from './router'
 import store from './store'
-import i18n from './utils/locale'
 import filters from './filters'
 import './control'
 import './components'
 import './assets/icons'
-import './plugins/element.js'
+import './plugins/element'
 import './styles/index.scss' // global css
 
-import Toast from './components/toast/index'
-Vue.use(Toast)
+// 开发环境添加mock数据
+if (process.env.NODE_ENV !== 'production') {
+  require('../mock')
+}
 
 Vue.config.productionTip = false
 
-// 如果是非线上环境，加载 VConsole（移动端适用）
-// if (process.env.NODE_ENV !== 'production') {
-//     var VConsole = require('vconsole/dist/vconsole.min.js');
-//     var vConsole = new VConsole();
-// }
-
-// 全局过滤器
+// 将 filter/index.导出的函数添加为全局过滤器
 Object.keys(filters).forEach(filterName => {
   Vue.filter(filterName, filters[filterName])
 })
@@ -30,6 +25,5 @@ Object.keys(filters).forEach(filterName => {
 new Vue({
   router,
   store,
-  i18n,
   render: h => h(App)
 }).$mount('#app')

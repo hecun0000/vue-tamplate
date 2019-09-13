@@ -130,3 +130,11 @@
   display: flex;
   align-items: center;
 }
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

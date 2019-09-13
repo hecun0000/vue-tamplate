@@ -1,0 +1,30 @@
+.dialog-title {
+  font-size: $font-size-lg;
+  border-bottom: 1px solid $border-color-common;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.dialog-sm-width {
+  width: $dialog-sm-width;
+}
+.dialog-md-width {
+  width: $dialog-md-width;
+}
+.dialog-lg-width {
+  width: $dialog-lg-width;
+}
+
+.dialog-footer {
+  text-align: right;
+}
+
+// 双栏布局
+.two-column-dialog {
+  display: flex;
+  .left-column-item, .right-column-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1
+  }
+}

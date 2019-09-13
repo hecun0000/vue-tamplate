@@ -8,16 +8,12 @@
         </p>
         <p @click="handleUrl">
             iconfont:
-            <i class="iconfont icon-weibo"></i>
+            <i class="iconfont icon-user"></i>
         </p>
         <transition
             enter-active-class="animated fadeIn"
             leave-active-class="animated fadeOut">
             <div v-if="show">
-                <p @click="handleLang">
-                    i18n国际化：
-                    {{$t('home.name', {name: 'Jelly'})}}
-                </p>
                 <p>
                     vue过滤器：<br/>
                     时间戳：{{1544179366 | timeFilter}}<br/>
@@ -72,16 +68,11 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld'
 import CountDown from '@/components/CountDown.vue'
 import CountDown2 from '@/components/CountDown'
 import Dialog from '@/components/Dialog'
 import { mapState, mapActions, mapGetters } from 'vuex'
-// import env from '@/config/env'
-// import { getUserInfo } from '@/api/common'
-// import animate from 'animate.css'
-import TWEEN from 'tween.js'
 import NP from 'number-precision'
 
 export default {
@@ -118,7 +109,6 @@ export default {
     //     this.show = false;
     // }, 6000)
     // tweenJs示例
-    this.tweenJS()
   },
   methods: {
     ...mapActions('user', ['changeUserInfo', 'getRank']),
@@ -130,32 +120,6 @@ export default {
     },
     timeEnd () {
 
-    },
-    tweenJS () {
-      let frameHandler
-
-      function animate (time) {
-        frameHandler = requestAnimationFrame(animate)
-        TWEEN.update(time) // time表示多长时间执行一次
-      }
-
-      // 创建补间动画
-      let that = this
-      new TWEEN.Tween({ num: 0 })
-        .to({ num: 2000 }, 3000)
-        .easing(TWEEN.Easing.Linear.None)
-        .onUpdate(function () {
-          // 这里不要用箭头函数，这里的this指向Tween实例
-          that.num = this.num.toFixed(0)
-        })
-        .onComplete(() => {
-          // Make sure to clean up after ourselves.
-          cancelAnimationFrame(frameHandler)
-        })
-        .start()
-
-      // 开始补间动画
-      animate()
     },
     openDialog () {
       this.isVisible = true

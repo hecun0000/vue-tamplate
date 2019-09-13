@@ -1,48 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="description of your site"/>
-    <meta name="keywords" content="keyword1,keyword2"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>vue_template</title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but vue_template doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
-</html>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <% if (process.env.NODE_ENV === 'production') { %>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <% if (process.env.NODE_ENV === 'production') { %>
 
-      <% for(var css of htmlWebpackPlugin.options.cdn.css) { %>
-        <link href="<%=css%>" rel="preload" as="style">
-        <link rel="stylesheet" href="<%=css%>" as="style">
-      <% } %>
-      <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
-        <link href="<%=js%>" rel="preload" as="script">
-        <script src="<%=js%>"></script>
-        <% } %>
-    <% } %>
-    <title>vue-cli3-project</title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but vue-cli3-project doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+  <% for(var css of htmlWebpackPlugin.options.cdn.css) { %>
+  <link href="<%=css%>" rel="preload" as="style">
+  <link rel="stylesheet" href="<%=css%>" as="style">
+  <% } %>
+  <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
+  <link href="<%=js%>" rel="preload" as="script">
+  <script src="<%=js%>"></script>
+  <% } %>
+  <% } %>
+  <title>vue-tamplate</title>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but vue-cli3-project doesn't work properly without JavaScript enabled. Please enable it to
+      continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
 </html>
