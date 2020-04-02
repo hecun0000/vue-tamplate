@@ -1,0 +1,95 @@
+<template>
+  <div class="role common-table">
+    <div class="handle-box">
+      <div class="handle-left"></div>
+      <div class="handle-right">
+        <el-button type="primary" @click="handleAdd">新增</el-button>
+        <el-button type="danger">批量删除</el-button>
+      </div>
+    </div>
+    <div class="table-box">
+      <el-table
+        ref="table"
+        v-loading="loading"
+        :data="tableData"
+        tooltip-effect="dark"
+        style="width: 100%"
+        @selection-change="handleSelectionChange"
+      >
+        <el-table-column type="selection" width="55"></el-table-column>
+        <el-table-column prop="name" label="角色名称"></el-table-column>
+        <el-table-column prop="content" label="描述"></el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button type="text" @click="handleCheck(scope.row)">查看</el-button>
+            <el-button type="text" @click="handleEdit(scope.row)">编辑</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+    <div class="pagination">
+      <pagination
+        :total="total"
+        :current-page="currentPage"
+        :page-sizes="pageSizes"
+        :page-size="pageSize"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
+    </div>
+    {{#if hasDialog}}
+    <{{dashCase name}}-dialog ref='{{properCase name}}Dialog'/>
+    {{/if}}
+  </div>
+</template>
+
+<script>
+import { pagination } from '@/mixins'
+{{#if hasApi}}
+import { get{{properCase name}}List } from '@/api/{{kebabCase dir}}/{{kebabCase name}}'
+{{/if}}
+{{#if hasDialog}}
+import { {{properCase name}}Dialog } from './components'
+{{/if}}
+
+export default {
+  name: 'Role',
+  {{#if hasDialog}}
+  components: {
+    {{properCase name}}Dialog
+  },
+  {{/if}}
+  mixins: [pagination], // 封装分页相关函数
+  data () {
+    return {
+      {{#if hasApi}}
+      listApi: get{{properCase name}}List, // 列表请求地址
+      {{/if}}
+      multipleSelection: [],
+      searchForm: {}
+    }
+  },
+  mounted () {
+    {{#if hasApi}}
+    this.getListData()
+    {{/if}}
+  },
+  methods: {
+    handleEdit (row) {
+      {{#if hasDialog}}
+      this.$refs.{{properCase name}}Dialog.openDialog(row)
+      {{/if}}
+    },
+    handleAdd () {
+      {{#if hasDialog}}
+      this.$refs.{{properCase name}}Dialog.openDialog()
+      {{/if}}
+    },
+    handleCheck (row) {
+      {{#if hasDialog}}
+      this.$refs.{{properCase name}}Dialog.openDialog(row, 'check')
+      {{/if}}
+    }
+  }
+}
+</script>
